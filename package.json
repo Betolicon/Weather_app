@@ -1,9 +1,10 @@
 {
-  "name": "validation",
+  "name": "weather",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm install --save-dev webpack-dev-server",
     "build": "webpack",
     "dev": "webpack serve",
     "deploy": "git subtree push --prefix dist origin gh-pages",

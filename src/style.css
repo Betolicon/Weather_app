@@ -3,22 +3,32 @@ body, html{
     margin: 0;
     height: 100dvh;
     font-family: "Exo 2", sans-serif;
+    font-size: clamp(0.5rem, 3vw + 0.8rem, 1rem);
+}
+
+* {
     box-sizing: border-box;
 }
 
 body{
     display: grid;
     background-image: linear-gradient(rgba(87, 241, 164, 0.505), rgb(55, 238, 196));
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.content{
+.content {
+    display: grid;
     align-self: center;
-    justify-self: center;
-    padding: 3rem 6rem;
-    border-radius: 50px;
-    background: linear-gradient(145deg, #32d6b0, #3bffd2);
-    box-shadow:  20px 20px 70px #2fcaa7,
-                -20px -20px 70px #3fffe1;
+    justify-self: center; 
+    padding: 3rem 4vw; 
+    border-radius: 50px; 
+    background: linear-gradient(145deg, #32d6b0, #3bffd2); 
+    box-shadow: 20px 20px 70px #2fcaa7, -20px -20px 70px #3fffe1; 
+    width: 90%; 
+    max-width: 800px; 
+    gap: 1rem;
 }
 
 #monica-content-root {
@@ -29,13 +39,79 @@ input{
     outline: 0;
     border: 0;
     border-radius: 1rem;
-    height: 1.5rem;
+    height: 2rem;
     width: 16rem;
-    transition: background-color 3s;
+    transition: background-color 1s, box-shadow 1s;
     padding: 0.5rem 1.5rem;
+    font-weight: bolder;
+    align-self: center;
+    justify-self: center;
+}
+
+button{
+    padding: 0.5rem 1.5rem;
+    border: 0;
+    border-radius: 1rem;
+    transition: background-color 1s, box-shadow 1s;
+    font-weight: bolder;
+}
+
+button:hover{
+    background-color: #3bffd2;
+    box-shadow: 0.1rem 0.1rem 1rem;
 }
 
 input:focus{
-    background-color: #ff9393;
+    background-color: #93ffe6;
     box-shadow: 0.1rem 0.1rem 1rem;
+}
+
+button:active{
+    background-color: gainsboro;
+    color: blue;
+}
+
+.country {
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.weather{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1rem;
+    padding: 1vw;
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 1vw 2vw;
+    border-radius: 1vw;
+}
+
+#loading {
+    display: none;
+    margin: 0 auto;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: animloader 1s linear infinite;
+}
+  
+@keyframes animloader {
+0% {
+    box-shadow: -72px 0 #FFF inset;
+}
+100% {
+    box-shadow: 48px 0 #FFF inset;
+}
 }

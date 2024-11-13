@@ -82,7 +82,7 @@ button:active{
 
 .weather{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 1rem;
     padding: 1vw;
 }
@@ -95,6 +95,10 @@ button:active{
     background-color: white;
     padding: 1vw 2vw;
     border-radius: 1vw;
+}
+
+.cards > *{
+    gap: 1rem;
 }
 
 #loading {

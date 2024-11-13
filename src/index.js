@@ -10,7 +10,12 @@ function createCards(condition, div){
     condition.forEach(cond => {
         const cards = document.createElement('div')
         cards.className = 'cards'
-        cards.innerHTML = cond
+        const date = document.createElement('h1').innerHTML = cond.date
+        const weather = document.createElement('p').innerHTML = cond.condition
+        const space = document.createElement('br')
+        cards.append(date)
+        cards.append(space)
+        cards.append(weather)
         div.appendChild(cards)
         content.appendChild(div)
     });
@@ -27,7 +32,7 @@ async function show() {
         if (!document.querySelector('.weather')) {
             div.className = 'weather';
         }
-        const condition = info.days.map(temp => temp.conditions).filter((_,index) => index<N)
+        const condition = info.days.map(temp => {return {date: temp.datetime, condition: temp.conditions}}).filter((_,index) => index<N)
         createCards(condition, div)
     } catch (error) {
         alert(`${error}`)

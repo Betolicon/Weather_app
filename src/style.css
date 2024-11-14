@@ -88,10 +88,10 @@ button:active{
 }
 
 .cards{
-    display: flex;
-    flex-direction: column;
+    display: grid;
     align-items: center;
     justify-content: center;
+    grid-template-rows: auto 1fr;
     background-color: white;
     padding: 1vw 2vw;
     border-radius: 1vw;

@@ -1,4 +1,7 @@
 import "./style.css"
+import clear from './clear.png'
+import overcast from './overcast.png'
+import rain from './rainy.png'
 
 const button = document.querySelector('button')
 const KEY = '8F9VDEN4SL3X6F9KNK8A8KDWW'
@@ -10,9 +13,23 @@ function createCards(condition, div){
     condition.forEach(cond => {
         const cards = document.createElement('div')
         cards.className = 'cards'
-        const date = document.createElement('h1').innerHTML = cond.date
+        const img = document.createElement('img')
+        if(cond.condition == 'Clear'){
+            img.alt = 'clear'
+            img.src = clear
+        }
+        else if (cond.condition == 'Overcast'){
+            img.alt = 'overcast'
+            img.src = overcast
+        }
+        else{
+            img.alt = 'Rain/partially cloud'
+            img.src = rain
+        }
+        const date = document.createElement('h1').textContent = cond.date
         const weather = document.createElement('p').innerHTML = cond.condition
         const space = document.createElement('br')
+        cards.append(img)
         cards.append(date)
         cards.append(space)
         cards.append(weather)

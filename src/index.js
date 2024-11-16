@@ -38,12 +38,11 @@ function createCards(condition, div){
     });
 }
 
-async function show() {
-    const input = document.querySelector('input').value
+async function show(input) {
     const loading = document.getElementById('loading');
     loading.style.display = 'block';
     try {
-        const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${input}?unitGroup=us&key=${KEY}&contentType=json`)
+        const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${input.value}?unitGroup=us&key=${KEY}&contentType=json`)
         const info =  await response.json()
         const div =  document.querySelector('.weather') || document.createElement('div')   
         if (!document.querySelector('.weather')) {
@@ -52,10 +51,21 @@ async function show() {
         const condition = info.days.map(temp => {return {date: temp.datetime, condition: temp.conditions}}).filter((_,index) => index<N)
         createCards(condition, div)
     } catch (error) {
-        alert(`${error}`)
+        input.setCustomValidity('Something is wrong')
+        input.reportValidity();
     }finally{
         loading.style.display = 'none';
     }
 }
 
-button.addEventListener('click', show)
+const confirm = () =>{        
+    const input = document.querySelector('input')
+    if (input.value === ""){
+        input.setCustomValidity('Enter a country')
+        input.reportValidity();
+    }
+    else
+        show(input)
+}
+
+button.addEventListener('click', confirm)
